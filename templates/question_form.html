@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <link rel="stylesheet" href="/static/new_form_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <div class="form-style-8">
+    <head>
+        <title> New Question </title>
+    </head>
+    <body>
+        <form action="/">
+            <button id="home" name="home_button" type="submit" action="/" class="button">HOME</button>
+        </form>
+        <h2> Ask a new question! </h2>
+        <form action="/new_question" method="POST">
+            <p>
+                <h3> Give your question a title: </h3><br>
+                <textarea id="question_title" name="question_title" placeholder="Write a question title..." minlength="5" required autofocus></textarea>
+            </p>
+            <p><h4> Type your question: </h4><br>
+            <textarea id="question_message" name="question_message" rows="5" cols="20" minlength="10" placeholder="Type your question here..." required autofocus></textarea></p>
+            <input type="submit" value="submit" name="Submit" class="button">
+        </form>
+    </body>
+    </div>
+</html>

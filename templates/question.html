@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html>
+    <link rel="stylesheet" href="/static/question_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <head>
+        <title> Question </title>
+    </head>
+    <body>
+        <form action="/">
+            <button id="home" name="home_button" type="submit" action="/" class="button">HOME</button>
+        </form>
+        <div class="table-title">
+            <table>
+                <thead>
+                    <tr>
+                        <th align="middle">{{ current_question[1] }}</th>
+                    </tr>
+                    <tr>
+                        <th align="middle">{{ current_question[2] }}</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+            <table class="table-fill">
+                <tbody class="table-hover">
+                    {% for row in current_answers %}
+                    <tr>
+                        {% for item in row %}
+                            <td class="text-left">{{ item }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                <form action="/question/{{ q_id }}/new-answer" method="POST">
+                    <input id="new_answer" name="new_answer" type="submit" class="button" width="60" value="{{ q_id }}">
+                </form>
+    </body>
+</html>
