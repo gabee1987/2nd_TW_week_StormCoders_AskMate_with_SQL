@@ -21,14 +21,16 @@ def index():
                     'Vote number',
                     'Title',
                     'Message',
+                    'Image',
                     'View',
                     'Delete',
                     'Vote Up',
                     'Vote Down'
                     ]
-    list_of_questions = open_question_file()
-    list_of_questions = data_sorting(list_of_questions, True)
-    return render_template('home.html', table_headers=table_headers, list_of_questions=list_of_questions)
+    query = ("""SELECT * FROM question;""")
+    conn = db_connection()
+    view_question_attributes = db_execute(query, conn)
+    return render_template('home.html', table_headers=table_headers, view_questions=view_question_attributes)
 
 
 @app.route('/question/new', methods=['GET'])
