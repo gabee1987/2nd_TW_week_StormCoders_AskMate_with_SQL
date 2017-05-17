@@ -16,11 +16,15 @@ body *::before {
 }
 
 body {
-    background-image: -webkit-linear-gradient(top, #e5ebeb, #b7cbc9);
-    background-image: linear-gradient(top, #e5ebeb, #b7cbc9);
+    background-position: auto;
+    padding-top: 1rem; 
+    background-attachment: fixed;
+    background: -webkit-linear-gradient(top, #e5ebeb, #b7cbc9);
+    background: linear-gradient(top, #e5ebeb, #b7cbc9);
 }
 
 h1 {
+    color: #4f93ce;
     font-size: 2rem;
     text-align: center;
     margin: 0 0 2em;
@@ -30,7 +34,7 @@ h1 {
     position: relative;
     max-width: 60rem;
     max-height: 100rem;
-    height: 40rem;
+    height: 50rem;
     margin: 5rem auto;
     background: #fff;
     width: 100%;
@@ -58,16 +62,12 @@ h1 {
             transform: scale(1);
 }
 
-fieldset {
-    margin: 0 0 3rem;
-    padding: 0;
-    border: none;
-}
 
 .form-group {
+    padding-top: 2rem;
     position: relative;
     margin-top: 2.25rem;
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.25rem;
 }
 
 .form-group input {
@@ -80,7 +80,7 @@ fieldset {
 
 .form-group .control-label {
     position: absolute;
-    top: 0.25rem;
+    top: 1.25rem;
     pointer-events: none;
     padding-left: 0.125rem;
     z-index: 1;
@@ -111,8 +111,8 @@ fieldset {
 .form-group textarea {
     display: block;
     background: none;
-    padding: 0.125rem 0.125rem 0.0625rem;
-    font-size: 1rem;
+    padding: 2rem 2rem 2rem 2rem;
+    font-size: 1.5rem;
     border-width: 0;
     border-color: transparent;
     line-height: 1.9;
@@ -121,12 +121,6 @@ fieldset {
     -webkit-transition: all 0.28s ease;
     transition: all 0.28s ease;
     box-shadow: none;
-}
-.form-group input[type="file"] {
-    line-height: 1;
-}
-.form-group input[type="file"] ~ .bar {
-    display: none;
 }
 .form-group input:focus,
 .form-group input:valid,
@@ -140,11 +134,9 @@ fieldset {
 }
 .form-group input:focus ~ .control-label,
 .form-group input:valid ~ .control-label,
-.form-group input.form-file ~ .control-label,
 .form-group input.has-value ~ .control-label,
 .form-group textarea:focus ~ .control-label,
 .form-group textarea:valid ~ .control-label,
-.form-group textarea.form-file ~ .control-label,
 .form-group textarea.has-value ~ .control-label {
     font-size: 0.8rem;
     color: gray;
@@ -222,9 +214,9 @@ fieldset {
     outline: none;
 }
 
-.home-button {
+.button .home-button {
     position: absolute !important;
-    padding: 20px, 20px, 20px, 20px !important; 
+    padding: 2px, 2px, 2px, 2px !important; 
 }
 
 
