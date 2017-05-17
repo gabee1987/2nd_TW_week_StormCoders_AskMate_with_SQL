@@ -4,6 +4,7 @@ by StormCoders
 '''
 from flask import Flask, request, redirect, render_template, flash
 from common import *
+import psycopg2
 
 app = Flask(__name__)
 app.secret_key = 'Stormcoders AskMate website is awesome'
@@ -66,6 +67,7 @@ def display_question(q_id):
     db_connection()
     query = ("""SELECT submission_time, view_number, vote_number, title, message, image FROM question\
                 WHERE id={0};""".format(q_id))
+    conn = db_connection
     db_execute(query, conn)
     records = db_execute()
     return render_template('question.html', q_id=q_id, records=records, table_headers=table_headers)
