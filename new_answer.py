@@ -10,7 +10,7 @@ def display_answer(q_id=None):
 
 
 @app.route('/question/new-answer/<q_id>', methods=['POST'])
-def add_new_answer():
+def add_new_answer(q_id=None):
     """
     Add the new answer to database.
     """
