@@ -47,45 +47,28 @@ def add_new_question():
         Adds a question to the database given by user.
         Appends question elements as rows to the appropiate file.
     '''
-    data = open_question_file()
-    max_id = 0
-    if len(data) > 0:
-        max_id = max(int(i[0]) for i in data)
-    current_time = str(int(time.time()))
-    decoded_time = str(datetime.datetime.fromtimestamp(float(current_time)).strftime('%Y-%m-%d %H:%M:%S'))
-    data.append([
-                str(max_id+1),
-                decoded_time,
-                '0',
-                '0',
-                request.form['question_title'],
-                request.form['question_message'],
-                ])
-    write_question_to_file(data)
-    return redirect('/')
+    pass
 
 
 @app.route('/question/<q_id>', methods=['GET', 'POST'])
-def display_question(q_id=None):
+def display_question(q_id):
     '''
-        Displays the question from the list, selected by q_id.
+        Displays the question from the database, selected by q_id.
     '''
-    list_of_questions = open_question_file()
-    q_id = request.form['view_button']
-    current_question = []
-    for row in list_of_questions:
-        if row[0] == q_id:
-            row[2] = str(int(row[2])+1)
-            current_question.append(row[0])
-            current_question.append(row[4])
-            current_question.append(row[5])
-            write_question_to_file(list_of_questions)
-    answer_list = open_answer_file()
-    current_answers = []
-    for row in answer_list:
-        if row[3] == q_id:
-            current_answers.append(row)
-    return render_template('question.html', q_id=q_id, current_question=current_question, current_answers=current_answers)
+    table_headers = [
+                    'Submission Time',
+                    'View number',
+                    'Vote number',
+                    'Title',
+                    'Message',
+                    'Image'
+                    ]
+    db_connection()
+    query = ("""SELECT submission_time, view_number, vote_number, title, message, image FROM question\
+                WHERE id={0};""".format(q_id))
+    db_execute(query, conn)
+    records = db_execute()
+    return render_template('question.html', q_id=q_id, records=records, table_headers=table_headers)
 
 
 @app.route('/question/<q_id>/delete', methods=['POST'])
@@ -94,13 +77,7 @@ def delete_question(q_id=None):
         Deletes the appropiate question.
         Removes a row from the file.
     '''
-    data = open_question_file()
-    q_id = request.form['delete_button']
-    for row in data:
-        if row[0] == q_id:
-            data.remove(row)
-    write_question_to_file(data)
-    return redirect('/')
+    pass
 
 
 @app.route('/question/<q_id>/vote-up', methods=['POST'])
@@ -109,14 +86,7 @@ def vote_up_question(q_id=None):
         Takes a vote up in the appropiate question.
         Adds 1 to the number in file.
     '''
-    data = open_question_file()
-    q_id = request.form['vote_up_button']
-    for row in data:
-        if row[0] == q_id:
-            row[3] = str(int(row[3])+1)
-    write_question_to_file(data)
-    flash('+1')
-    return redirect('/')
+    pass
 
 
 @app.route('/question/<q_id>/vote-down', methods=['POST'])
@@ -125,14 +95,7 @@ def vote_down_question(q_id=None):
         Takes a vote down in the appropiate question.
         Substracs 1 from the number in file.
     '''
-    data = open_question_file()
-    q_id = request.form['vote_down_button']
-    for row in data:
-        if row[0] == q_id:
-            row[3] = str(int(row[3])-1)
-    write_question_to_file(data)
-    flash('-1')
-    return redirect('/')
+    pass
 
 
 @app.route('/question/<q_id>/new-answer', methods=['POST'])
@@ -140,8 +103,7 @@ def display_answer(q_id=None):
     '''
         Displays the answer form page.
     '''
-    question_id = q_id
-    return render_template('answer_form.html', question_id=question_id)
+    pass
 
 
 @app.route('/question/new-answer', methods=['POST'])
@@ -149,21 +111,7 @@ def add_new_answer():
     """
     Add the new answer to database.
     """
-    data = open_answer_file()
-    max_id = 0
-    if len(data) > 0:
-        max_id = max(int(i[0]) for i in data)
-    current_time = str(int(time.time()))
-    decoded_time = str(datetime.datetime.fromtimestamp(float(current_time)).strftime('%Y-%m-%d %H:%M:%S'))
-    data.append([
-                str(max_id+1),
-                decoded_time,
-                '0',
-                request.form['question_id'],
-                request.form['answer_message']
-                ])
-    write_answer_to_file(data)
-    return redirect("/")
+    pass
 
 
 @app.errorhandler(404)

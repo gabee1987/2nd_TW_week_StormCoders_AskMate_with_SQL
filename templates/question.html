@@ -14,13 +14,13 @@
             <table>
                 <thead class="question_head">
                     <tr>
-                        {% for head in table_heads %}
+                        {% for head in table_headers %}
+                        <td>{{ head[0] }}</td>
                         <td>{{ head[1] }}</td>
                         <td>{{ head[2] }}</td>
                         <td>{{ head[3] }}</td>
                         <td>{{ head[4] }}</td>
                         <td>{{ head[5] }}</td>
-                        <td>{{ head[6] }}</td>
                         {% endfor %}
                     </tr>
                 </thead>
@@ -38,8 +38,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-                <form action="/question/{{ q_id }}/new-answer" method="POST">
-                    <input id="new_answer" name="new_answer" type="submit" class="button" width="60" value="{{ q_id }}">
-                </form>
+            <a href="/question/{{ q_id }}/new-answer">New answer</a>
     </body>
 </html>

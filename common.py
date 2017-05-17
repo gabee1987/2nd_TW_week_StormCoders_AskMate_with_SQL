@@ -15,7 +15,7 @@ def db_connection():
     return conn
 
 
-def db_execute(query):
+def db_execute(query, conn):
     cursor = conn.cursor()
     cursor.execute(query)
     records = cursor.fetchall()
