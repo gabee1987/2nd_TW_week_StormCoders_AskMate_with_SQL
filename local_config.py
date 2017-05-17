@@ -1,10 +1,10 @@
 '''
-    Connection parameters to PostgreSQL
+    Local connection parameters to PostgreSQL
 '''
 
 
-DATABASE = 'your_db'
-USER = 'your_usr'
-PASSWORD = 'your_pass'
+DATABASE = 'gabee'
+USER = 'gabee'
+PASSWORD = 'mamalaz1'
 HOST = '127.0.0.1'
 PORT = '5432'
