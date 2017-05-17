@@ -9,8 +9,8 @@
     </head>
     <body>
         <a href="/">Home</a>
-        <h1>{{ view_question_attributes[0][0] }}</h1>
-        <h2>{{ view_question_attributes[0][1] }}
+        <h1>{{ view_questions[0][0] }}</h1>
+        <h2>{{ view_questions[0][1] }}
         <h3> Give a new answer! </h3>
         <form action="/question/new-answer/{{ q_id }}" method="POST">
             <p><h4> Type your answer: </h4><br>
