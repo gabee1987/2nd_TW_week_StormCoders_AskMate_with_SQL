@@ -8,16 +8,15 @@ from local_config import *
 
 
 def db_connection():
-    conn = psycopg2.connect(
-                            database=DATABASE,
-                            user=USER,
-                            password=PASSWORD,
-                            host=HOST,
-                            port=PORT
-                            )
+    connect_str = "dbname={0} user={1} password={2} host={3}".format(DATABASE, USER, PASSWORD, HOST)
+    conn = psycopg2.connect(connect_str)
+    # set autocommit option, to do every query when we call it
+    conn.autocommit = True
+    return conn
 
 
-
-
-
-
+def db_execute(query, conn):
+    cursor = conn.cursor()
+    cursor.execute(query)
+    records = cursor.fetchall()
+    return records
