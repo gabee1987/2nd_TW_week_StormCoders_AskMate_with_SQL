@@ -6,16 +6,17 @@
         <head>
             <title>Ask Mate v1.0-Alpha</title>
         </head>
+        <div id="home">
         <body>
-            <div align="middle" class="table-title">
+            <div class="table-title">
                 <h1 align="middle">AskMate</h1>
                 <h2 align="middle">Question list</h2>
             </div>
             <a href="/question/new">New question</a>
-            <table>
+            <table id="table" class="table">
                 <tr>
                     {% for item in table_headers %}
-                        <th class="text-left">{{ item }}</th>
+                        <th class="table-header">{{ item }}</th>
                     {% endfor %}
                 </tr>
                 {% for row in view_questions %}
@@ -47,4 +48,5 @@
                 {% endfor %}
             </table>
         </body>
+        </div>
     </html>
