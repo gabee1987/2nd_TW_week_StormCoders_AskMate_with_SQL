@@ -20,4 +20,4 @@ def add_new_answer():
                  VALUES({0}, {1}, {2}, {3}, {4}, {5}) WHERE id={6};""".format(dt, 0, q_id, answer_message, 0, q_id))
     conn = db_connection()
     db_execute(query, conn)
-    return redirect("/")
+    return redirect("/question/<q_id>")
