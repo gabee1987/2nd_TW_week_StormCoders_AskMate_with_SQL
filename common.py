@@ -14,6 +14,8 @@ def db_connection():
     conn.autocommit = True
     return conn
 
+conn = db_connection()
+
 
 def db_execute(query, conn):
     cursor = conn.cursor()
