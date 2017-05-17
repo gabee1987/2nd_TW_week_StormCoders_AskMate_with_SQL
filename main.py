@@ -28,10 +28,10 @@ def index():
                     'Vote Up',
                     'Vote Down'
                     ]
+    select_type_query = True
     query = ("""SELECT * FROM question;""")
-    conn = db_connection()
-    view_question_attributes = db_execute(query, conn)
-    return render_template('home.html', table_headers=table_headers, view_questions=view_question_attributes)
+    view_questions = database_manager(query, select_type_query)
+    return render_template('home.html', table_headers=table_headers, view_questions=view_questions)
 
 
 @app.route('/question/new', methods=['GET'])
