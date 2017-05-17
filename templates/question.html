@@ -12,29 +12,32 @@
         </form>
         <div class="table-title">
             <table>
-                <thead>
+                <thead class="question_head">
                     <tr>
-                        <th align="middle">{{ current_question[1] }}</th>
-                    </tr>
-                    <tr>
-                        <th align="middle">{{ current_question[2] }}</th>
+                        {% for head in table_headers %}
+                        <td>{{ head[0] }}</td>
+                        <td>{{ head[1] }}</td>
+                        <td>{{ head[2] }}</td>
+                        <td>{{ head[3] }}</td>
+                        <td>{{ head[4] }}</td>
+                        <td>{{ head[5] }}</td>
+                        {% endfor %}
                     </tr>
                 </thead>
             </table>
         </div>
-            <table class="table-fill">
+        <div class="table-fill">
+            <table>
                 <tbody class="table-hover">
-                    {% for row in current_answers %}
+                    {% for record in records %}
                     <tr>
-                        {% for item in row %}
-                            <td class="text-left">{{ item }}</td>
+                        {% for data in record %}
+                            <td>{{ data }}</td>
                         {% endfor %}
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-                <form action="/question/{{ q_id }}/new-answer" method="POST">
-                    <input id="new_answer" name="new_answer" type="submit" class="button" width="60" value="{{ q_id }}">
-                </form>
+            <a href="/question/{{ q_id }}/new-answer">New answer</a>
     </body>
 </html>

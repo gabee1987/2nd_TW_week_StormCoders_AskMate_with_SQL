@@ -20,3 +20,5 @@ def db_execute(query, conn):
     cursor.execute(query)
     records = cursor.fetchall()
     return records
+
+
