@@ -73,6 +73,7 @@ def display_question(q_id=None):
                     'Image'
                     ]
     a_table_headers = [
+                    'ID',
                     'Submission Time',
                     'Vote number',
                     'Question Id',
@@ -88,7 +89,7 @@ def display_question(q_id=None):
                 WHERE id = %s;"""
     select_type_query = True
     view_question = database_manager(query, select_type_query, values)
-    query = """SELECT submission_time, vote_number, question_id, message, image FROM answer\
+    query = """SELECT id, submission_time, vote_number, question_id, message, image FROM answer\
                 WHERE question_id = %s;"""
     view_answers = database_manager(query, select_type_query, values)
     return render_template(
@@ -101,12 +102,27 @@ def display_question(q_id=None):
                         )
 
 
-@app.route('/question/<q_id>/delete', methods=['GET', 'POST'])
+@app.route('/question/<q_id>/delete')
 def delete_question(q_id=None):
     '''
         Deletes the appropriate question.
         Removes a row from the table.
     '''
+    select_type_query = False
+    query = """DELETE FROM comment WHERE question_id = %s;"""
+    values = q_id
+    database_manager(query, select_type_query, values)
+
+    select_type_query = False
+    query = """DELETE FROM question_tag WHERE question_id = %s;"""
+    values = q_id
+    database_manager(query, select_type_query, values)
+
+    select_type_query = False
+    query = """DELETE FROM answer WHERE question_id = %s;"""
+    values = q_id
+    database_manager(query, select_type_query, values)
+
     select_type_query = False
     query = """DELETE FROM question WHERE id = %s;"""
     values = q_id
@@ -114,15 +130,15 @@ def delete_question(q_id=None):
     return redirect('/')
 
 
-@app.route('/answer/<a_id>/delete', methods=['POST'])
+@app.route('/answer/<a_id>/delete')
 def delete_answer(a_id=None):    # This function isn't working right now!!!
     '''
         Deletes the appropriate answer.
         Removes a row from the table.
     '''
     select_type_query = False
-    query = """DELETE FROM answer WHERE question_id = %s;"""
-    values = q_id
+    query = """DELETE FROM answer WHERE id = %s;"""
+    values = a_id
     database_manager(query, select_type_query, values)
     return redirect('/')
 
