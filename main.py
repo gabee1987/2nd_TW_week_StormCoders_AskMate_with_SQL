@@ -105,8 +105,6 @@ def delete_question(q_id=None):
     '''
     select_type_query = False
     query = """DELETE FROM question WHERE id = %s;"""
-    query = """DELETE FROM answer WHERE question_id = %s;"""
-    query = """DELETE FROM comment WHERE question_id = %s;"""
     values = q_id
     database_manager(query, select_type_query, values)
     return redirect('/')
