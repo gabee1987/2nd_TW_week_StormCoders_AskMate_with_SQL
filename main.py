@@ -80,12 +80,12 @@ def display_question(q_id=None):
                     'Image'
                     ]
     query = """SELECT submission_time, view_number, vote_number, title, message, image FROM question\
-                WHERE id=%s;"""
+                WHERE id = %s;"""
     select_type_query = True
     values = q_id
     view_question = database_manager(query, select_type_query, values)
     query = """SELECT submission_time, vote_number, question_id, message, image FROM answer\
-                WHERE question_id=%s;"""
+                WHERE question_id = %s;"""
     view_answers = database_manager(query, select_type_query, values)
     return render_template(
                         'question.html',
@@ -119,7 +119,7 @@ def delete_answer(a_id=None):
         Removes a row from the table.
     '''
     select_type_query = False
-    query = """DELETE FROM answer WHERE question_id=%s;"""
+    query = """DELETE FROM answer WHERE question_id = %s;"""
     values = q_id
     database_manager(query, select_type_query, values)
     return redirect('/')
@@ -156,7 +156,7 @@ def display_answer(q_id=None):
     '''
         Displays the answer form page.
     '''
-    query = """SELECT title, message FROM question WHERE id=%s;"""
+    query = """SELECT title, message FROM question WHERE id = %s;"""
     values = q_id
     select_type_query = True
     view_questions = database_manager(query, select_type_query, values)

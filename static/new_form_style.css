@@ -40,7 +40,7 @@ h1 {
     background: #fff;
     width: 100%;
     padding: 3rem 5rem 0;
-    border-radius: 2px;
+    border-radius: 3px;
 }
 .container::before {
     content: '';
@@ -181,7 +181,7 @@ h1 {
     background: currentColor;
     border: 1px solid currentColor;
     font-size: 1.1rem;
-    color: #4f93ce;
+    color: #5ba3ca;
     margin: 3rem 0;
     padding: 0.75rem 3rem;
     cursor: pointer;

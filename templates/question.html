@@ -2,22 +2,25 @@
 
 <html class="html">
     <link rel="stylesheet" href="/static/question_style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <head>
+        <link rel="stylesheet" type="text/css"
+                href="https://fonts.googleapis.com/css?family=Raleway">
         <title> Question </title>
     </head>
+    <div class="home-button">
+        <a href="/">
+            <button class="button" type="button"><span>Home</span></button>
+        </a>
+    </div>
     <div class="container">
     <body>
-        <div class="home-button">
-            <a class="button" type="button" href="/"><span>Home</span></a>
-        </div>
-            <table class="q-table">
-                <tbody>
-                <tr>
-                    {% for head in q_table_headers %}
-                        <th class="question_head">{{ head }}</th>
-                    {% endfor %}
-                </tr>
+        <table class="q-table">
+            <h3>Question</h3>
+            <tr>
+                {% for head in q_table_headers %}
+                    <th class="question_head">{{ head }}</th>
+                {% endfor %}
+            </tr>
                 <tr>
                     {% for question in view_question %}
                     <tr>
@@ -27,10 +30,9 @@
                     </tr>
                     {% endfor %}
                 </tr>
-                </tbody>
             </table>
             <table class="ans-table">
-                <tbody>
+                <h3>Answers</h3>
                 <tr>
                     {% for head in a_table_headers %}
                         <th class="answer_head">{{ head }}</th>
@@ -45,10 +47,11 @@
                     </tr>
                     {% endfor %}
                 </tr>
-                </tbody>
             </table>
             <div class="new_ans-button">
-                <a class="button" href="/question/{{ q_id }}/new-answer"><span>New answer</span></a>
+                <a href="/question/{{ q_id }}/new-answer">
+                    <button class="button"><span>New answer</span></button>
+                </a>
             </div>
     </body>
     </div>
