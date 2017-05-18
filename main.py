@@ -104,22 +104,28 @@ def delete_answer(a_id=None):
     return redirect('/')
 
 
-@app.route('/question/<q_id>/vote-up', methods=['POST'])
+@app.route('/question/<q_id>/vote-up')
 def vote_up_question(q_id=None):
     '''
         Takes a vote up in the appropiate question.
         Adds 1 to the number in file.
     '''
-    pass
+    query = ("""UPDATE question SET vote_number + 1 WHERE id = {0};""".format(q_id))
+    select_type_query = False
+    database_manager(query, select_type_query)
+    return redirect("/")
 
 
-@app.route('/question/<q_id>/vote-down', methods=['POST'])
+@app.route('/question/<q_id>/vote-down')
 def vote_down_question(q_id=None):
     '''
         Takes a vote down in the appropiate question.
         Substracs 1 from the number in file.
     '''
-    pass
+    query = ("""UPDATE question SET vote_number - 1 WHERE id = {0};""".format(q_id))
+    select_type_query = False
+    database_manager(query, select_type_query)
+    return redirect("/")
 
 
 @app.route('/question/<q_id>/new-answer')
