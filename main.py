@@ -5,6 +5,7 @@ by StormCoders
 from flask import Flask, request, redirect, render_template, flash
 from common import *
 import psycopg2
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'Stormcoders AskMate website is awesome'
@@ -40,6 +41,22 @@ def new_question():
         Displays the question form page.
     '''
     return render_template('question_form.html')
+
+
+@app.route('/new_question', methods=['POST'])
+def add_new_question():
+    '''
+        Adds new question to the database.
+    '''
+    dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    question_title = request.form['q_title']
+    question_message = request.form['q_message']
+    query = """INSERT INTO question (submission_time, view_number, vote_number, title, message, image)\
+                 VALUES(%s, %s, %s, %s, %s, %s);"""
+    values =  (dt, 0, 0, question_title, question_message, 0)
+    select_type_query = False
+    database_manager(query, False, values)
+    return redirect("/")
 
 
 @app.route('/question/<q_id>', methods=['GET', 'POST'])
