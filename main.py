@@ -54,7 +54,7 @@ def add_new_question():
 @app.route('/question/<q_id>', methods=['GET', 'POST'])
 def display_question(q_id=None):
     '''
-        Displays the questions from the database, selected by q_id.
+        Displays the question from the database, selected by q_id.
     '''
     table_headers = [
                     'Submission Time',
@@ -68,7 +68,16 @@ def display_question(q_id=None):
                 WHERE id={0};""".format(q_id))
     select_type_query = True
     view_question = database_manager(query, select_type_query)
-    return render_template('question.html', q_id=q_id, view_question=view_question, table_headers=table_headers)
+    query = ("""SELECT submission_time, vote_number, question_id, message, image FROM answer\
+                WHERE question_id={0};""".format(q_id))
+    view_answers = database_manager(query, select_type_query)
+    return render_template(
+                        'question.html',
+                        q_id=q_id,
+                        view_question=view_question,
+                        table_headers=table_headers,
+                        view_answers=view_answers
+                        )
 
 
 @app.route('/question/<q_id>/delete', methods=['POST'])
@@ -129,7 +138,7 @@ def add_new_answer(q_id=None):
     """
     Add the new answer to database.
     """
-    dt = str(datetime.now())
+    dt = datetime.now()
     answer_message = request.form["answer_message"]
     query = ("""INSERT INTO answer(submisson_time, vote_number, question_id, message, image)
                  VALUES({0}, {1}, {2}, {3}, {4}, {5}) WHERE id={6};""".format(dt, 0, q_id, answer_message, 0, q_id))
