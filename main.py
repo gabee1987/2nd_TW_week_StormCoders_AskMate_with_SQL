@@ -66,9 +66,8 @@ def display_question(q_id=None):
                     ]
     query = ("""SELECT submission_time, view_number, vote_number, title, message, image FROM question\
                 WHERE id={0};""".format(q_id))
-    db_execute(query, conn)
     select_type_query = True
-    view_question = db_execute(query, select_type_query)
+    view_question = database_manager(query, select_type_query)
     return render_template('question.html', q_id=q_id, view_question=view_question, table_headers=table_headers)
 
 
