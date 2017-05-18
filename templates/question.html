@@ -1,38 +1,49 @@
 <!DOCTYPE HTML>
 
-<html>
+<html class="html">
     <link rel="stylesheet" href="/static/question_style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <head>
         <title> Question </title>
     </head>
+    <div class="question">
     <body>
-        <form action="/">
-            <button id="home" name="home_button" type="submit" action="/" class="button">HOME</button>
-        </form>
-        <div class="table-title">
-            <table>
-                <thead class="question_head">
-                    <tr>
-                        {% for head in table_headers %}
-                        <th>{{ head }}</th>
-                        {% endfor %}
-                    </tr>
-                </thead>
-            </table>
+        <div class="home-button">
+            <a class="button" type="button" href="/"><span>Home</span></a>
         </div>
-        <div class="table-fill">
-            <table>
-                <tbody class="table-hover">
-                    {% for record in records %}
+            <table class="q-table">
+                <tr>
+                    {% for head in table_headers %}
+                        <th class="question_head">{{ head }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for question in view_question %}
                     <tr>
-                        {% for data in record %}
+                        {% for data in question %}
                             <td>{{ data }}</td>
                         {% endfor %}
                     </tr>
                     {% endfor %}
-                </tbody>
+                </tr>
             </table>
-            <a href="/question/{{ q_id }}/new-answer">New answer</a>
+            <table class="ans-table>">
+                <tr>
+                    {% for head in table_headers %}
+                        <th class="answer_head">{{ head }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for question in view_question %}
+                    <tr>
+                        {% for data in question %}
+                            <td>{{ data }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tr>
+            </table>
+            <a class="new_ans-button" href="/question/<q_id>/new-answer"><span>New answer</span></a>
     </body>
+    </div>
 </html>
