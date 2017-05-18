@@ -12,6 +12,7 @@
             <a class="button" type="button" href="/"><span>Home</span></a>
         </div>
             <table class="q-table">
+                <tbody>
                 <tr>
                     {% for head in table_headers %}
                         <th class="question_head">{{ head }}</th>
@@ -26,8 +27,10 @@
                     </tr>
                     {% endfor %}
                 </tr>
+                </tbody>
             </table>
             <table class="ans-table>">
+                <tbody>
                 <tr>
                     {% for head in table_headers %}
                         <th class="answer_head">{{ head }}</th>
@@ -42,6 +45,7 @@
                     </tr>
                     {% endfor %}
                 </tr>
+                </tbody>
             </table>
             <a class="new_ans-button" href="/question/<q_id>/new-answer"><span>New answer</span></a>
     </body>
