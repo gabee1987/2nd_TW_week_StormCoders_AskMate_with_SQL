@@ -14,15 +14,17 @@ def database_manager(query, select_type_query, values=None):
     conn.autocommit = True
     cursor = conn.cursor()
     if values is not None:
-        cursor.execute(query, values)
         if select_type_query is True:
+            cursor.execute(query, values)
             records = cursor.fetchall()
             conn.close()
             return records
-    else:
+        cursor.execute(query, values)
+    if values is None:
+        if select_type_query is True:
+            cursor.execute(query)
+            records = cursor.fetchall()
+            conn.close()
+            return records
         cursor.execute(query)
-    if select_type_query is True:
-        records = cursor.fetchall()
-        conn.close()
-        return records
     conn.close()
