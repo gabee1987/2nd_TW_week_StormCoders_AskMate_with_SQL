@@ -19,8 +19,7 @@ body {
     background-position: absolute;
     padding-top: 1rem; 
     background-attachment: fixed;
-    background-image: -webkit-linear-gradient(top, #e5ebeb, #b7cbc9);
-    background-image: linear-gradient(top, #e5ebeb, #b7cbc9);
+    background-image: url("/static/img/bg.png");
 }
 
 h1 {

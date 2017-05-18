@@ -97,14 +97,16 @@ def display_question(q_id=None):
                         )
 
 
-@app.route('/question/<q_id>/delete', methods=['POST'])
+@app.route('/question/<q_id>/delete', methods=['GET', 'POST'])
 def delete_question(q_id=None):
     '''
         Deletes the appropriate question.
         Removes a row from the table.
     '''
     select_type_query = False
-    query = """DELETE FROM question WHERE id=%s;"""
+    query = """DELETE FROM question WHERE id = %s;"""
+    query = """DELETE FROM answer WHERE question_id = %s;"""
+    query = """DELETE FROM comment WHERE question_id = %s;"""
     values = q_id
     database_manager(query, select_type_query, values)
     return redirect('/')
