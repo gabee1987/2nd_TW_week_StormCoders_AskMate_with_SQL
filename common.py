@@ -8,13 +8,16 @@ from local_config import *
 
 
 def database_manager(query, select_type_query, values=None):
+    """ Set the connection with the database,
+    and execute the orders in it. After the
+    process, it closes the connection. """
+
     connect_str = "dbname={0} user={1} password={2} host={3}".format(DATABASE, USER, PASSWORD, HOST)
     conn = psycopg2.connect(connect_str)
-    # set autocommit option, to do every query when we call it
     conn.autocommit = True
     cursor = conn.cursor()
-    if values is not None:
-        if select_type_query is True:
+    if values is not None:      # The function decides if the query has some variable in it.
+        if select_type_query is True:    # The function decides if the type of the query is SELECT or not.
             cursor.execute(query, values)
             records = cursor.fetchall()
             conn.close()
