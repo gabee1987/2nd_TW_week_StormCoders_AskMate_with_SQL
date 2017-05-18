@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'Stormcoders AskMate website is awesome'
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     '''
         Displays the questions as a table.
@@ -32,23 +32,6 @@ def index():
     query = ("""SELECT * FROM question;""")
     view_questions = database_manager(query, select_type_query)
     return render_template('home.html', table_headers=table_headers, view_questions=view_questions)
-
-
-@app.route('/question/new', methods=['GET'])
-def new_question():
-    '''
-        Displays the question form page.
-    '''
-    return render_template('question_form.html')
-
-
-@app.route('/new_question', methods=['POST'])
-def add_new_question():
-    '''
-        Adds a question to the database given by user.
-        Appends question elements as rows to the appropiate file.
-    '''
-    pass
 
 
 @app.route('/question/<q_id>', methods=['GET', 'POST'])
