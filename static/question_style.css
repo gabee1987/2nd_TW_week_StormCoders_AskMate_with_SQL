@@ -2,14 +2,170 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.html {
-background-position: absolute;
-padding-top: 1em; 
+/*#home {
+background-position: auto;
+padding-top: 1rem; 
 background-attachment: fixed;
 background: -webkit-linear-gradient(top, #e5ebeb, #b7cbc9);
 background: linear-gradient(top, #e5ebeb, #b7cbc9);
 }
+*/
 
+
+
+body {
+    background-position: absolute;
+    padding-top: 1rem; 
+    background-attachment: fixed;
+    background-image: url("/static/img/bg.png");
+}
+
+/* 
+==========================================================================
+Table
+==========================================================================
+*/
+
+
+.container {
+    position: relative;
+    max-width: auto;
+    max-height: auto;
+    height: auto;
+    margin: 5rem auto;
+    background: #fff;
+    min-width:800px;
+    max-width:1600px;
+    width: 100%;
+    padding: 3rem 5rem 0;
+    border-radius: 2px;
+}
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-transition: -webkit-transform 0.28s ease-in-out;
+    transition: -webkit-transform 0.28s ease-in-out;
+    transition: transform 0.28s ease-in-out;
+    transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;
+    z-index: -1;
+}
+.container:hover::before {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+
+
+.table-title h1 {
+    color: #d95254;
+    font-size: 3rem;
+    text-align: center;
+    margin: 0 0 0em;
+}
+
+.table-title h2 {
+    color: #d95254;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 0 0.5em;
+}
+
+.table td {
+    min-width:10px;
+    max-width:300px;
+}
+
+.table {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+.table tbody tr:hover,
+.table tbody tr:focus {
+  background-color: rgba(63, 81, 181, 0.2);
+  color: rgba(0, 0, 0, 0.6);
+}
+.table tbody tr:nth-child(1):hover,
+.table tbody tr:nth-child(1):focus {
+  cursor: default;
+  background-color: rgba(63, 81, 181, 0);
+}
+.table tbody tr:nth-child(even):hover,
+.table tbody tr:nth-child(even):focus {
+  background-color: rgba(63, 81, 181, 0.05);
+}
+.table th {
+  background-color: #5ba3c6;
+  color: #ffffff;
+  font-size: 2em;
+  padding-left: 15px;
+}
+.table tr {
+  white-space: nowrap;
+  font-size: 0.8em;
+  padding: 16px 16px 16px 0;
+  height: 72px;
+  max-height: 10em;
+}
+.table tr td {
+  padding-left: 16px;
+  font-size: 1.2em;
+}
+.table tr:nth-child(1) {
+  border-bottom: 1px solid #e6e6e6;
+  color: #828282;
+  text-align: left;
+  font-size: 0.75em;
+  font-weight: 700;
+  padding: 16px 16px 16px 0;
+}
+.table tr:nth-child(1) a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+.table tr:nth-child(1) a:hover {
+  color: black;
+}
+.table .can-be-sorted {
+  opacity: 0.4;
+}
+.table .can-be-sorted span {
+  margin-right: -5px;
+}
+.table .sortationActive {
+  color: black;
+}
+.table .pointer {
+  cursor: pointer;
+}
+
+.table-footer {
+  border-top: 1px solid #e6e6e6;
+  background-color: rgba(63, 81, 181, 0.05);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.table-header {
+  margin-top: 15px;
+}
+
+
+.loading-animation {
+  -webkit-transition: all linear 1s;
+  transition: all linear 1s;
+}
+
+.loading-animation.ng-hide {
+  opacity: 0;
+}
 
 /* 
 ==========================================================================
@@ -74,226 +230,7 @@ Buttons
     outline: none;
 }
 
-.button .home-button {
+.button .new_q-button {
     position: absolute !important;
     padding: 2px, 2px, 2px, 2px !important; 
-}
-
-.button .new_ans-button {
-    position: absolute !important;
-    margin: 20px, 2px, 2px, 2px !important;
-}
-
-
-/* 
-==========================================================================
-Question-table
-==========================================================================
-*/
-.q-table-title h1 {
-    color: #4f93ce;
-    font-size: 3rem;
-    text-align: center;
-    margin: 0 0 0em;
-}
-
-.q-table-title h2 {
-    color: #4f93ce;
-    font-size: 2rem;
-    text-align: center;
-    margin: 0 0 0.5em;
-}
-
-.q-table {
-  margin-top: 5em;
-  min-width: 100%;
-  border-collapse: collapse;
-}
-.q-table tbody tr:hover,
-.q-table tbody tr:focus {
-  background-color: rgba(63, 81, 181, 0.2);
-  color: rgba(0, 0, 0, 0.6);
-}
-.q-table tbody tr:nth-child(1):hover,
-.q-table tbody tr:nth-child(1):focus {
-  cursor: default;
-  background-color: rgba(63, 81, 181, 0);
-}
-.q-table tbody tr:nth-child(even):hover,
-.q-table tbody tr:nth-child(even):focus {
-  background-color: rgba(63, 81, 181, 0.05);
-}
-.q-table th {
-  background-color: #4f93ce;
-  color: #ffffff;
-  font-size: 2em;
-  padding-left: 15px;
-}
-.q-table tr {
-  white-space: nowrap;
-  font-size: 0.8em;
-  padding: 16px 16px 16px 0;
-  height: 72px;
-}
-.q-table tr td {
-  padding-left: 16px;
-  font-size: 1.2em;
-}
-.q-table tr:nth-child(1) {
-  border-bottom: 1px solid #e6e6e6;
-  color: #828282;
-  text-align: left;
-  font-size: 0.75em;
-  font-weight: 700;
-  padding: 16px 16px 16px 0;
-}
-.q-table tr:nth-child(1) a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 1.5em;
-  font-weight: 300;
-}
-.q-table tr:nth-child(1) a:hover {
-  color: black;
-}
-.q-table .can-be-sorted {
-  opacity: 0.4;
-}
-.q-table .can-be-sorted span {
-  margin-right: -5px;
-}
-.q-table .sortationActive {
-  color: black;
-}
-.q-table .pointer {
-  cursor: pointer;
-}
-
-.q-table-footer {
-  border-top: 1px solid #e6e6e6;
-  background-color: rgba(63, 81, 181, 0.05);
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-.q-table-header {
-  margin-top: 15px;
-}
-
-
-.loading-animation {
-  -webkit-transition: all linear 1s;
-  transition: all linear 1s;
-}
-
-.loading-animation.ng-hide {
-  opacity: 0;
-}
-
-
-
-
-/* 
-==========================================================================
-Answer-table
-==========================================================================
-*/
-.ans-table-title h1 {
-    color: #4f93ce;
-    font-size: 3rem;
-    text-align: center;
-    margin: 0 0 0em;
-}
-
-.ans-table-title h2 {
-    color: #4f93ce;
-    font-size: 2rem;
-    text-align: center;
-    margin: 0 0 0.5em;
-}
-
-.ans-table {
-  margin-top: 5em;
-  min-width: 100%;
-  border-collapse: collapse;
-}
-.ans-table tbody tr:hover,
-.ans-table tbody tr:focus {
-  background-color: rgba(63, 81, 181, 0.2);
-  color: rgba(0, 0, 0, 0.6);
-}
-.ans-table tbody tr:nth-child(1):hover,
-.ans-table tbody tr:nth-child(1):focus {
-  cursor: default;
-  background-color: rgba(63, 81, 181, 0);
-}
-.ans-table tbody tr:nth-child(even):hover,
-.ans-table tbody tr:nth-child(even):focus {
-  background-color: rgba(63, 81, 181, 0.05);
-}
-.ans-table th {
-  background-color: #4f93ce;
-  color: #ffffff;
-  font-size: 2em;
-  padding-left: 15px;
-}
-.ans-table tr {
-  white-space: nowrap;
-  font-size: 0.8em;
-  padding: 16px 16px 16px 0;
-  height: 72px;
-}
-.ans-table tr td {
-  padding-left: 16px;
-  font-size: 1.2em;
-}
-.ans-table tr:nth-child(1) {
-  border-bottom: 1px solid #e6e6e6;
-  color: #828282;
-  text-align: left;
-  font-size: 0.75em;
-  font-weight: 700;
-  padding: 16px 16px 16px 0;
-}
-.ans-table tr:nth-child(1) a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 1.5em;
-  font-weight: 300;
-}
-.ans-table tr:nth-child(1) a:hover {
-  color: black;
-}
-.ans-table .can-be-sorted {
-  opacity: 0.4;
-}
-.ans-table .can-be-sorted span {
-  margin-right: -5px;
-}
-.ans-table .sortationActive {
-  color: black;
-}
-.ans-table .pointer {
-  cursor: pointer;
-}
-
-.ans-table-footer {
-  border-top: 1px solid #e6e6e6;
-  background-color: rgba(63, 81, 181, 0.05);
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-.ans-table-header {
-  margin-top: 15px;
-}
-
-
-.loading-animation {
-  -webkit-transition: all linear 1s;
-  transition: all linear 1s;
-}
-
-.loading-animation.ng-hide {
-  opacity: 0;
 }

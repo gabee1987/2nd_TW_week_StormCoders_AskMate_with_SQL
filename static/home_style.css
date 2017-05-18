@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 /*#home {
@@ -22,22 +22,20 @@ body {
 
 /* 
 ==========================================================================
-Table
+Container
 ==========================================================================
 */
-
-
 .container {
     position: relative;
     max-width: auto;
     max-height: auto;
     height: auto;
-    margin: 5rem auto;
+    margin: 10em auto auto auto;
     background: #fff;
     min-width:800px;
-    max-width:1600px;
+    max-width:1700px;
     width: 100%;
-    padding: 3rem 5rem 0;
+    padding: 2em 2em 2em 2em;
     border-radius: 2px;
 }
 .container::before {
@@ -66,7 +64,8 @@ Table
     color: #d95254;
     font-size: 3rem;
     text-align: center;
-    margin: 0 0 0em;
+    margin: -4em 0em 0em 0em;
+    letter-spacing: 0.3em;
 }
 
 .table-title h2 {
@@ -74,39 +73,37 @@ Table
     font-size: 2rem;
     text-align: center;
     margin: 0 0 0.5em;
+    letter-spacing: 0.3em;
 }
 
-.table td {
-    min-width:200px;
-    max-width:600px;
-}
+/* 
+==========================================================================
+Table
+==========================================================================
+*/
 
 .table {
-  min-width: 100%;
+  max-width: 100%;
+  min-width: 10%;
   border-collapse: collapse;
 }
 .table tbody tr:hover,
 .table tbody tr:focus {
-  background-color: rgba(63, 81, 181, 0.2);
-  color: rgba(0, 0, 0, 0.6);
+  background-color: #d7e5ec;
+  color: #000000;
 }
 .table tbody tr:nth-child(1):hover,
 .table tbody tr:nth-child(1):focus {
-  cursor: default;
-  background-color: rgba(63, 81, 181, 0);
+  background-color: #d7e5ec;
 }
 .table tbody tr:nth-child(even):hover,
 .table tbody tr:nth-child(even):focus {
-  background-color: rgba(63, 81, 181, 0.05);
+  background-color: #d7e5ec;
 }
 .table th {
-  background-color: #5ba3c6;
-  color: #ffffff;
-  font-size: 2em;
   padding-left: 15px;
 }
 .table tr {
-  white-space: nowrap;
   font-size: 0.8em;
   padding: 16px 16px 16px 0;
   height: 72px;
@@ -152,10 +149,16 @@ Table
   padding-bottom: 6px;
 }
 
-.table-header {
+.toolbar-input {
   margin-top: 15px;
 }
-
+.toolbar-input input {
+  border-color: white;
+  color: white;
+}
+.toolbar-input > label {
+  color: inherit !important;
+}
 
 .loading-animation {
   -webkit-transition: all linear 1s;
@@ -165,6 +168,9 @@ Table
 .loading-animation.ng-hide {
   opacity: 0;
 }
+
+
+
 
 /* 
 ==========================================================================
@@ -229,7 +235,8 @@ Buttons
     outline: none;
 }
 
-.button .new_q-button {
-    position: absolute !important;
-    padding: 2px, 2px, 2px, 2px !important; 
+.new_q {
+    position: relative;
+    padding: 0em 0em 0em 0em;
+    margin: 2em, 2em, 2em, 2em; 
 }
