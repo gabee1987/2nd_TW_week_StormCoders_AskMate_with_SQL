@@ -6,13 +6,13 @@
         <head>
             <title>Ask Mate v1.0-Alpha</title>
         </head>
-        <div id="home">
+        <div class="home">
         <body>
             <div class="table-title">
                 <h1 align="middle">AskMate</h1>
                 <h2 align="middle">Question list</h2>
             </div>
-            <a href="/question/new">New question</a>
+            <a class="new_q-button" href="/question/new"><span>New question</span></a>
             <table id="table" class="table">
                 <tr>
                     {% for item in table_headers %}

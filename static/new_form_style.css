@@ -16,11 +16,11 @@ body *::before {
 }
 
 body {
-    background-position: auto;
+    background-position: absolute;
     padding-top: 1rem; 
     background-attachment: fixed;
-    background: -webkit-linear-gradient(top, #e5ebeb, #b7cbc9);
-    background: linear-gradient(top, #e5ebeb, #b7cbc9);
+    background-image: -webkit-linear-gradient(top, #e5ebeb, #b7cbc9);
+    background-image: linear-gradient(top, #e5ebeb, #b7cbc9);
 }
 
 h1 {
@@ -39,7 +39,7 @@ h1 {
     background: #fff;
     width: 100%;
     padding: 3rem 5rem 0;
-    border-radius: 1px;
+    border-radius: 2px;
 }
 .container::before {
     content: '';
@@ -74,18 +74,18 @@ h1 {
     height: 1.9rem;
 }
 .form-group textarea {
-    height: 15rem;
+    height: 17rem;
     resize: none;
 }
 
 .form-group .control-label {
     position: absolute;
-    top: 1.25rem;
+    top: 1rem;
     pointer-events: none;
     padding-left: 0.125rem;
     z-index: 1;
     color: #b3b3b3;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: normal;
     -webkit-transition: all 0.28s ease;
     transition: all 0.28s ease;
@@ -107,11 +107,24 @@ h1 {
     transition: left 0.28s ease, width 0.28s ease;
     z-index: 2;
 }
-.form-group input,
-.form-group textarea {
+.form-group input {
     display: block;
     background: none;
     padding: 2rem 2rem 2rem 2rem;
+    font-size: 1.5rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 1.9;
+    width: 100%;
+    color: transparent;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
+}
+.form-group textarea {
+    display: block;
+    background: none;
+    padding: 0.5rem 2rem 2rem 2rem;
     font-size: 1.5rem;
     border-width: 0;
     border-color: transparent;
