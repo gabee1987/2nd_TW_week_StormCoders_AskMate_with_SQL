@@ -79,6 +79,11 @@ Buttons
     padding: 2px, 2px, 2px, 2px !important; 
 }
 
+.button .new_ans-button {
+    position: absolute !important;
+    margin: 20px, 2px, 2px, 2px !important;
+}
+
 
 /* 
 ==========================================================================

@@ -37,9 +37,9 @@
                     {% endfor %}
                 </tr>
                 <tr>
-                    {% for question in view_question %}
+                    {% for answer in view_answers %}
                     <tr>
-                        {% for data in question %}
+                        {% for data in answer %}
                             <td>{{ data }}</td>
                         {% endfor %}
                     </tr>
@@ -48,7 +48,7 @@
                 </tbody>
             </table>
             <div class="new_ans-button">
-                <a class="new_ans-button" href="/question/<q_id>/new-answer"><span>New answer</span></a>
+                <a class="button" href="/question/<q_id>/new-answer"><span>New answer</span></a>
             </div>
     </body>
     </div>
