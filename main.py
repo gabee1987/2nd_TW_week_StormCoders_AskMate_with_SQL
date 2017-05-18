@@ -5,6 +5,7 @@ by StormCoders
 from flask import Flask, request, redirect, render_template, flash
 from common import *
 import psycopg2
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'Stormcoders AskMate website is awesome'
@@ -135,7 +136,7 @@ def display_answer(q_id=None):
     query = ("""SELECT title, message FROM question WHERE id={0};""".format(q_id))
     select_type_query = True
     view_questions = database_manager(query, select_type_query)
-    return render_template('answer_form.html', question_id=q_id, view_questions=view_questions)
+    return render_template('answer_form.html', q_id=q_id, view_questions=view_questions)
 
 
 @app.route('/question/new-answer/<q_id>', methods=['POST'])
@@ -143,18 +144,18 @@ def add_new_answer(q_id=None):
     """
     Add the new answer to database.
     """
-    dt = datetime.now()
+    dt = str(datetime.now())
     answer_message = request.form["answer_message"]
     query = ("""INSERT INTO answer(submisson_time, vote_number, question_id, message, image)
-                 VALUES({0}, {1}, {2}, {3}, {4}, {5}) WHERE id={6};""".format(dt, 0, q_id, answer_message, 0, q_id))
+                 VALUES('%s', '%s', '%s', '%s', '%s') WHERE id='%s';""" % (dt, 0, q_id, answer_message, 0, q_id))
     select_type_query = False
     database_manager(query, select_type_query)
-    return redirect("/question/<q_id>")
+    return render_template("/question/{{ q_id }}")
 
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return 'Oops, page not found!', 404
+    return 'Már megint mi baszódott el te szerencsétlen?!', 404
 
 
 if __name__ == '__main__':
