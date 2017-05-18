@@ -79,10 +79,14 @@ def display_question(q_id=None):
                     'Message',
                     'Image'
                     ]
+    select_type_query = False
+    values = q_id
+    query = """UPDATE question SET view_number = view_number + 1\
+                WHERE id = %s;"""
+    database_manager(query, select_type_query, values)
     query = """SELECT submission_time, view_number, vote_number, title, message, image FROM question\
                 WHERE id = %s;"""
     select_type_query = True
-    values = q_id
     view_question = database_manager(query, select_type_query, values)
     query = """SELECT submission_time, vote_number, question_id, message, image FROM answer\
                 WHERE question_id = %s;"""
@@ -111,7 +115,7 @@ def delete_question(q_id=None):
 
 
 @app.route('/answer/<a_id>/delete', methods=['POST'])
-def delete_answer(a_id=None):
+def delete_answer(a_id=None):    # This function isn't working right now!!!
     '''
         Deletes the appropriate answer.
         Removes a row from the table.
