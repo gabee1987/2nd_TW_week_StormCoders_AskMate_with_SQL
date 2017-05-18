@@ -83,6 +83,8 @@ Table
 */
 
 .table {
+  position: relative;
+  margin: 8em 2em 2em 2em;
   max-width: 100%;
   min-width: 10%;
   border-collapse: collapse;
@@ -224,5 +226,5 @@ Buttons
 .new_q {
     position: relative;
     top: 100px;
-    left: 10em; 
+    left: 11em; 
 }

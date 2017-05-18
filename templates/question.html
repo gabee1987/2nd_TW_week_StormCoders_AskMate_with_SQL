@@ -30,14 +30,14 @@
                     </tr>
                     {% endfor %}
                 </tr>
-            </table>
-            <table class="ans-table">
-                <h3>Answers</h3>
-                <tr>
-                    {% for head in a_table_headers %}
-                        <th class="answer_head">{{ head }}</th>
-                    {% endfor %}
-                </tr>
+        </table>
+        <table class="ans-table">
+            <h3>Answers</h3>
+            <tr>
+                {% for head in a_table_headers %}
+                    <th class="answer_head">{{ head }}</th>
+                {% endfor %}
+            </tr>
                 <tr>
                     {% for answer in view_answers %}
                     <tr>
@@ -47,12 +47,12 @@
                     </tr>
                     {% endfor %}
                 </tr>
-            </table>
-            <div class="new_ans-button">
-                <a href="/question/{{ q_id }}/new-answer">
-                    <button class="button"><span>New answer</span></button>
-                </a>
-            </div>
+        </table>
+        <div class="new_ans-button">
+            <a href="/question/{{ q_id }}/new-answer">
+                <button class="button"><span>New answer</span></button>
+            </a>
+        </div>
     </body>
     </div>
 </html>
