@@ -173,7 +173,7 @@ def add_new_answer(q_id=None):
     select_type_query = False
     values = (dt, 0, q_id, answer_message, 0)
     database_manager(query, select_type_query, values)
-    return redirect("/question/<q_id>")
+    return redirect("/question/" + q_id)
 
 
 @app.errorhandler(404)
