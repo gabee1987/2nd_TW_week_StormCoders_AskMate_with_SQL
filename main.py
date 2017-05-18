@@ -56,11 +56,18 @@ def display_question(q_id=None):
     '''
         Displays the question from the database, selected by q_id.
     '''
-    table_headers = [
+    q_table_headers = [
                     'Submission Time',
                     'View number',
                     'Vote number',
                     'Title',
+                    'Message',
+                    'Image'
+                    ]
+    a_table_headers = [
+                    'Submission Time',
+                    'Vote number',
+                    'Question Id',
                     'Message',
                     'Image'
                     ]
@@ -75,7 +82,8 @@ def display_question(q_id=None):
                         'question.html',
                         q_id=q_id,
                         view_question=view_question,
-                        table_headers=table_headers,
+                        q_table_headers=q_table_headers,
+                        a_table_headers=a_table_headers,
                         view_answers=view_answers
                         )
 
