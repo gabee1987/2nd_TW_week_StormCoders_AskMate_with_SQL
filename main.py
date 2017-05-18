@@ -74,10 +74,25 @@ def display_question(q_id=None):
 @app.route('/question/<q_id>/delete', methods=['POST'])
 def delete_question(q_id=None):
     '''
-        Deletes the appropiate question.
-        Removes a row from the file.
+        Deletes the appropriate question.
+        Removes a row from the table.
     '''
-    pass
+    select_type_query = False
+    query = ("""DELETE FROM question WHERE id={0};""".format(q_id))
+    database_manager(query, select_type_query)
+    return redirect('/')
+
+
+@app.route('/answer/<a_id>/delete', methods=['POST'])
+def delete_answer(a_id=None):
+    '''
+        Deletes the appropriate answer.
+        Removes a row from the table.
+    '''
+    select_type_query = False
+    query = ("""DELETE FROM answer WHERE question_id={0};""".format(a_id))
+    database_manager(query, select_type_query)
+    return redirect('/')
 
 
 @app.route('/question/<q_id>/vote-up', methods=['POST'])
