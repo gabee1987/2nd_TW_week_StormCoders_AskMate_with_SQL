@@ -131,7 +131,7 @@ def vote_up_question(q_id=None):
         Takes a vote up in the appropiate question.
         Adds 1 to the number in file.
     '''
-    query = ("""UPDATE question SET vote_number = vote_number + 1 WHERE id = %s;""")
+    query = """UPDATE question SET vote_number = vote_number + 1 WHERE id = %s;"""
     select_type_query = False
     values = q_id
     database_manager(query, select_type_query, values)
