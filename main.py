@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'Stormcoders AskMate website is awesome'
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     '''
         Displays the questions as a table.
@@ -34,7 +34,7 @@ def index():
     return render_template('home.html', table_headers=table_headers, view_questions=view_questions)
 
 
-@app.route('/question/new', methods=['GET'])
+@app.route('/question/new')
 def new_question():
     '''
         Displays the question form page.
