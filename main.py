@@ -34,6 +34,14 @@ def index():
     return render_template('home.html', table_headers=table_headers, view_questions=view_questions)
 
 
+@app.route('/question/new')
+def new_question():
+    '''
+        Displays the question form page.
+    '''
+    return render_template('question_form.html')
+
+
 @app.route('/question/<q_id>', methods=['GET', 'POST'])
 def display_question(q_id=None):
     '''
