@@ -14,7 +14,7 @@
             <table class="q-table">
                 <tbody>
                 <tr>
-                    {% for head in table_headers %}
+                    {% for head in q_table_headers %}
                         <th class="question_head">{{ head }}</th>
                     {% endfor %}
                 </tr>
@@ -29,10 +29,10 @@
                 </tr>
                 </tbody>
             </table>
-            <table class="ans-table>">
+            <table class="ans-table">
                 <tbody>
                 <tr>
-                    {% for head in table_headers %}
+                    {% for head in a_table_headers %}
                         <th class="answer_head">{{ head }}</th>
                     {% endfor %}
                 </tr>
@@ -47,7 +47,9 @@
                 </tr>
                 </tbody>
             </table>
-            <a class="new_ans-button" href="/question/<q_id>/new-answer"><span>New answer</span></a>
+            <div class="new_ans-button">
+                <a class="new_ans-button" href="/question/<q_id>/new-answer"><span>New answer</span></a>
+            </div>
     </body>
     </div>
 </html>
