@@ -25,22 +25,22 @@
                             <td>{{ question }}</td>
                         {% endfor %}
                         <td align="middle">
-                            <a href="/question/{{ view_questions[0][0] }}">
+                            <a href="/question/{{ row[0] }}">
                             <img border="0" alt="View" src="/static/img/view.png" width="50" height="50">
                             </a>
                         </td>
                         <td align="middle">
-                            <a href="/question/{{ view_questions[0][0] }}/delete">
+                            <a href="/question/{{ row[0] }}/delete">
                             <img border="0" alt="View" src="/static/img/bin.png" width="50" height="50">
                             </a>
                         </td>
                         <td align="middle">
-                            <a href="/question/{{ view_questions[0][0] }}/vote-up">
+                            <a href="/question/{{ row[0] }}/vote-up">
                             <img border="0" alt="View" src="/static/img/vote_up.png" width="50" height="50">
                             </a>
                         </td>
                         <td align="middle">
-                            <a href="/question/{{ view_questions[0][0] }}/vote-down">
+                            <a href="/question/{{ row[0] }}/vote-down">
                             <img border="0" alt="View" src="/static/img/vote_down.png" width="50" height="50">
                             </a>
                         </td>

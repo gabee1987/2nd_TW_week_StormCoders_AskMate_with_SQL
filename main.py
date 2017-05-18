@@ -110,7 +110,7 @@ def vote_up_question(q_id=None):
         Takes a vote up in the appropiate question.
         Adds 1 to the number in file.
     '''
-    query = ("""UPDATE question SET vote_number + 1 WHERE id = {0};""".format(q_id))
+    query = ("""UPDATE question SET vote_number = vote_number + 1 WHERE id = {0};""".format(q_id))
     select_type_query = False
     database_manager(query, select_type_query)
     return redirect("/")
@@ -122,7 +122,7 @@ def vote_down_question(q_id=None):
         Takes a vote down in the appropiate question.
         Substracs 1 from the number in file.
     '''
-    query = ("""UPDATE question SET vote_number - 1 WHERE id = {0};""".format(q_id))
+    query = ("""UPDATE question SET vote_number = vote_number - 1 WHERE id = {0};""".format(q_id))
     select_type_query = False
     database_manager(query, select_type_query)
     return redirect("/")
