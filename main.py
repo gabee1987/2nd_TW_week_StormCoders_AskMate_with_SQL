@@ -78,10 +78,11 @@ def display_question(q_id=None):
                     'Vote number',
                     'Question Id',
                     'Message',
-                    'Image'
+                    'Image',
+                    'Delete'
                     ]
     select_type_query = False
-    values = q_id
+    values = [q_id]
     query = """UPDATE question SET view_number = view_number + 1\
                 WHERE id = %s;"""
     database_manager(query, select_type_query, values)
@@ -110,37 +111,37 @@ def delete_question(q_id=None):
     '''
     select_type_query = False
     query = """DELETE FROM comment WHERE question_id = %s;"""
-    values = q_id
+    values = [q_id]
     database_manager(query, select_type_query, values)
 
     select_type_query = False
     query = """DELETE FROM question_tag WHERE question_id = %s;"""
-    values = q_id
+    values = [q_id]
     database_manager(query, select_type_query, values)
 
     select_type_query = False
     query = """DELETE FROM answer WHERE question_id = %s;"""
-    values = q_id
+    values = [q_id]
     database_manager(query, select_type_query, values)
 
     select_type_query = False
     query = """DELETE FROM question WHERE id = %s;"""
-    values = q_id
+    values = [q_id]
     database_manager(query, select_type_query, values)
     return redirect('/')
 
 
-@app.route('/answer/<a_id>/delete')
-def delete_answer(a_id=None):    # This function isn't working right now!!!
+@app.route('/answer/<q_id>/<a_id>/delete')
+def delete_answer(q_id=None, a_id=None):    # This function isn't working right now!!!
     '''
         Deletes the appropriate answer.
         Removes a row from the table.
     '''
     select_type_query = False
     query = """DELETE FROM answer WHERE id = %s;"""
-    values = a_id
+    values = [a_id]
     database_manager(query, select_type_query, values)
-    return redirect('/')
+    return redirect('/question/' + q_id)
 
 
 @app.route('/question/<q_id>/vote-up')
@@ -151,7 +152,7 @@ def vote_up_question(q_id=None):
     '''
     query = """UPDATE question SET vote_number = vote_number + 1 WHERE id = %s;"""
     select_type_query = False
-    values = q_id
+    values = [q_id]
     database_manager(query, select_type_query, values)
     return redirect("/")
 
@@ -164,7 +165,7 @@ def vote_down_question(q_id=None):
     '''
     query = """UPDATE question SET vote_number = vote_number - 1 WHERE id = %s;"""
     select_type_query = False
-    values = q_id
+    values = [q_id]
     database_manager(query, select_type_query, values)
     return redirect("/")
 
@@ -175,7 +176,7 @@ def display_answer(q_id=None):
         Displays the answer form page.
     '''
     query = """SELECT title, message FROM question WHERE id = %s;"""
-    values = q_id
+    values = [q_id]
     select_type_query = True
     view_questions = database_manager(query, select_type_query, values)
     return render_template('answer_form.html', q_id=q_id, view_questions=view_questions)

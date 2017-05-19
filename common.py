@@ -16,7 +16,7 @@ def database_manager(query, select_type_query, values=None):
     conn = psycopg2.connect(connect_str)
     conn.autocommit = True
     cursor = conn.cursor()
-    if values is not None:      # The function decides if the query has some variable in it.
+    if values is not None:     # The function decides if the query has some variable in it.
         if select_type_query is True:    # The function decides if the type of the query is SELECT or not.
             cursor.execute(query, values)
             records = cursor.fetchall()
