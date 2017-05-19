@@ -34,8 +34,8 @@ h1 {
 .container {
     position: relative;
     max-width: 60rem;
-    max-height: 100rem;
-    height: 50rem;
+    max-height: 500rem;
+    height: auto;
     margin: 1em auto;
     background: #fff;
     width: 100%;
