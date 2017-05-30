@@ -32,7 +32,7 @@ def index():
     select_type_query = True
     query = ("""SELECT * FROM question;""")
     view_questions = database_manager(query, select_type_query)
-    return render_template('home.html', table_headers=table_headers, view_questions=view_questions)
+    return render_template('index.html', table_headers=table_headers, view_questions=view_questions)
 
 
 @app.route('/question/new')

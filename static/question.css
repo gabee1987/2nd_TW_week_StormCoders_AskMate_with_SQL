@@ -11,13 +11,24 @@ background: linear-gradient(top, #e5ebeb, #b7cbc9);
 }
 */
 
+html {
+    min-height: 100%;
+    margin: auto;
+}
 
 
 body {
-    background-position: absolute;
+    margin: 0;
+    position: center;
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+    height: 100%;
     padding-top: 1rem; 
-    background-attachment: fixed;
-    background-image: url("/static/img/bg.png");
+    background: fixed;
+    background: -webkit-radial-gradient(circle, #e8e9eb 10%, #a2a5aa 10%); /* Safari 5.1-6.0 */
+    background: -o-radial-gradient(circle, #e8e9eb 10%, #a2a5aa 10%); /* Opera 11.6-12.0 */
+    background: -moz-radial-gradient(circle, #e8e9eb 10%, #a2a5aa 10%); /* Firefox 3.6-15 */
+    background: radial-gradient(circle, #e8e9eb 30%, #a2a5aa 100%); /* Standard syntax */
 }
 
 /* 
@@ -155,7 +166,7 @@ Answer table
 
 
 .ans-table {
-  max-width: 100%;
+  max-width: 80%;
   min-width: 10%;
   border-collapse: collapse;
 }
