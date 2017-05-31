@@ -3,7 +3,7 @@ AskMate Q&A website
 by StormCoders
 '''
 from flask import Flask, request, redirect, render_template, flash
-from common import *
+from db_manager import *
 import psycopg2
 from datetime import datetime
 
@@ -30,9 +30,8 @@ def index():
                     'Vote Up',
                     'Vote Down'
                     ]
-    select_type_query = True
     query = ("""SELECT * FROM question;""")
-    view_questions = database_manager(query, select_type_query)
+    view_questions = query_execute(query, return_data='all_data')
     return render_template('index.html', table_headers=table_headers, view_questions=view_questions)
 
 
@@ -52,11 +51,10 @@ def add_new_question():
     dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     question_title = request.form['q_title']
     question_message = request.form['q_message']
-    query = """INSERT INTO question (submission_time, view_number, vote_number, title, message, image)\
-                 VALUES(%s, %s, %s, %s, %s, %s);"""
-    values = (dt, 0, 0, question_title, question_message, 0)
-    select_type_query = False
-    database_manager(query, False, values)
+    query = """INSERT INTO question (submission_time, view_number, vote_number, title, message, image, user_id) \
+                VALUES(%s, %s, %s, %s, %s, %s, %s);"""
+    data_to_modify = (dt, 0, 0, question_title, question_message, 0, 1)
+    query_execute(query, data_to_modify, 'no_data')
     return redirect("/")
 
 
@@ -82,18 +80,16 @@ def display_question(q_id=None):
                     'Image',
                     'Delete'
                     ]
-    select_type_query = False
-    values = [q_id]
+    data_to_modify = [q_id]
     query = """UPDATE question SET view_number = view_number + 1\
                 WHERE id = %s;"""
-    database_manager(query, select_type_query, values)
+    query_execute(query, data_to_modify, return_data == 'no_data')
     query = """SELECT submission_time, view_number, vote_number, title, message, image FROM question\
                 WHERE id = %s;"""
-    select_type_query = True
-    view_question = database_manager(query, select_type_query, values)
+    view_question = query_execute(query, data_to_modify, 'all_data')
     query = """SELECT id, submission_time, vote_number, question_id, message, image FROM answer\
                 WHERE question_id = %s;"""
-    view_answers = database_manager(query, select_type_query, values)
+    view_answers = query_execute(query, data_to_modify, 'all_data')
     return render_template(
                         'question.html',
                         q_id=q_id,
@@ -110,25 +106,13 @@ def delete_question(q_id=None):
         Deletes the appropriate question.
         Removes a row from the table.
     '''
-    select_type_query = False
-    query = """DELETE FROM comment WHERE question_id = %s;"""
-    values = [q_id]
-    database_manager(query, select_type_query, values)
-
-    select_type_query = False
-    query = """DELETE FROM question_tag WHERE question_id = %s;"""
-    values = [q_id]
-    database_manager(query, select_type_query, values)
-
-    select_type_query = False
     query = """DELETE FROM answer WHERE question_id = %s;"""
-    values = [q_id]
-    database_manager(query, select_type_query, values)
+    data_to_modify = [q_id]
+    query_execute(query, data_to_modify, 'no_data')
 
-    select_type_query = False
     query = """DELETE FROM question WHERE id = %s;"""
-    values = [q_id]
-    database_manager(query, select_type_query, values)
+    data_to_modify = [q_id]
+    query_execute(query, data_to_modify, 'no_data')
     return redirect('/')
 
 
@@ -138,10 +122,9 @@ def delete_answer(q_id=None, a_id=None):    # This function isn't working right 
         Deletes the appropriate answer.
         Removes a row from the table.
     '''
-    select_type_query = False
     query = """DELETE FROM answer WHERE id = %s;"""
-    values = [a_id]
-    database_manager(query, select_type_query, values)
+    data_to_modify = [a_id]
+    query_execute(query, data_to_modify, 'no_data')
     return redirect('/question/' + q_id)
 
 
@@ -152,9 +135,8 @@ def vote_up_question(q_id=None):
         Adds 1 to the number in file.
     '''
     query = """UPDATE question SET vote_number = vote_number + 1 WHERE id = %s;"""
-    select_type_query = False
-    values = [q_id]
-    database_manager(query, select_type_query, values)
+    data_to_modify = [q_id]
+    query_execute(query, data_to_modify, 'no_data')
     return redirect("/")
 
 
@@ -165,9 +147,8 @@ def vote_down_question(q_id=None):
         Substracs 1 from the number in file.
     '''
     query = """UPDATE question SET vote_number = vote_number - 1 WHERE id = %s;"""
-    select_type_query = False
-    values = [q_id]
-    database_manager(query, select_type_query, values)
+    data_to_modify = [q_id]
+    query_execute(query, data_to_modify, 'no_data')
     return redirect("/")
 
 
@@ -177,9 +158,8 @@ def display_answer(q_id=None):
         Displays the answer form page.
     '''
     query = """SELECT title, message FROM question WHERE id = %s;"""
-    values = [q_id]
-    select_type_query = True
-    view_questions = database_manager(query, select_type_query, values)
+    data_to_modify = [q_id]
+    view_questions = query_execute(query, data_to_modify, 'all_data')
     return render_template('answer_form.html', q_id=q_id, view_questions=view_questions)
 
 
@@ -191,10 +171,9 @@ def add_new_answer(q_id=None):
     dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     answer_message = request.form["answer_message"]
     query = """INSERT INTO answer (submission_time, vote_number, question_id, message, image)
-                 VALUES(%s, %s, %s, %s, %s);"""
-    select_type_query = False
-    values = (dt, 0, q_id, answer_message, 0)
-    database_manager(query, select_type_query, values)
+                VALUES(%s, %s, %s, %s, %s);"""
+    data_to_modify = (dt, 0, q_id, answer_message, 0)
+    query_execute(query, data_to_modify, 'no_data')
     return redirect("/question/" + q_id)
 
 
