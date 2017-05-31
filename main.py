@@ -12,6 +12,7 @@ app.secret_key = 'Stormcoders AskMate website is awesome'
 
 
 @app.route('/')
+@app.route('/index')
 def index():
     '''
         Displays the questions as a table.
