@@ -1,6 +1,6 @@
 @app.route("/user/<user_id>")
 def display_user_page(user_id=None):
-    select_from_question = ("""SELECT question.title
+    select_from_question = ("""SELECT question.title, question.id
                                 FROM question
                                 INNER JOIN users
                                     ON question.user_id = users.id;""")

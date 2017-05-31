@@ -23,8 +23,12 @@
                <th>Your questions</th>
            </tr>
            <tr>
-                {% for question_title in select_from_question %}
-                    <td>question_title</td>
+                {% for question_datas in select_from_question %}
+                    {% for question_id_and_title in question_datas %}
+                        <td>
+                            <a href="/question/question_id_and_title[1]">question_id_and_title[0]</a>
+                        </td>
+                    {% endfor %}
                 {% endfor %}
            </tr>
            <tr>
