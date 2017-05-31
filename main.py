@@ -177,6 +177,31 @@ def add_new_answer(q_id=None):
     return redirect("/question/" + q_id)
 
 
+@app.route('/registration')
+def registration():
+    '''
+        Displays the registration page.
+    '''
+    return render_template('registration.html')
+
+
+@app.route('/add_registration', methods=['POST'])
+def add_registration():
+    '''
+        Adds the new user to the database.
+    '''
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    username = request.form['username']
+    birth_date = request.form['bday']
+    email = request.form['email']
+    query = """INSERT INTO users (first_name, last_name, username, birth_date, email)\
+                VALUES(%s, %s, %s, %s, %s);"""
+    data_to_modify = (first_name, last_name, username, birth_date, email)
+    query_execute(query, data_to_modify, 'no_data')
+    return redirect("/")
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return 'Missing', 404
