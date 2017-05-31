@@ -159,43 +159,22 @@ Top menu
 
 /* 
 ==========================================================================
-Table
+Container
 ==========================================================================
 */
 
 .container {
-    position: relative;
-    max-width: auto;
-    max-height: auto;
-    height: auto;
-    margin: 5rem auto;
-    background: #fff;
-    min-width:800px;
-    max-width:1600px;
-    width: 100%;
-    padding: 3rem 5rem 0;
+    display: block;
     border-radius: 3px;
+    background-color: #fdfdfd;
+    position: center;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 4em auto;
+    width: 90%;
+    box-shadow: 0px 2px 8px #888888;
 }
-.container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-    -webkit-transform: scale(0.98);
-            transform: scale(0.98);
-    -webkit-transition: -webkit-transform 0.28s ease-in-out;
-    transition: -webkit-transform 0.28s ease-in-out;
-    transition: transform 0.28s ease-in-out;
-    transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;
-    z-index: -1;
-}
-.container:hover::before {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
+
 
 
 
@@ -210,8 +189,9 @@ h3 {
 }
 
 .q-table {
+  margin: auto;
   max-width: 100%;
-  min-width: 10%;
+  min-width: 80%;
   border-collapse: collapse;
 }
 .q-table tbody tr:hover,
@@ -290,9 +270,10 @@ Answer table
 */
 
 
-.ans-table {
+.ans-table { 
+  margin: auto;
   max-width: 80%;
-  min-width: 10%;
+  min-width: 70%;
   border-collapse: collapse;
 }
 .ans-table tbody tr:hover,
@@ -381,7 +362,7 @@ Buttons
     border: 1px solid currentColor;
     font-size: 1.1rem;
     color: #4f93ce;
-    margin: 3rem 0;
+    margin: 3rem 1rem;
     padding: 0.75rem 3rem;
     cursor: pointer;
     -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;

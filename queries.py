@@ -1,7 +1,12 @@
 """ SQL handling Module"""
 
 
-select_questions_for_display = """SELECT * FROM question;"""
+select_questions_for_display = """SELECT question.id, question.submission_time, question.view_number, question.vote_number,\
+                                question.title, question.message, users.username\
+                                FROM question\
+                                LEFT JOIN users\
+                                ON question.user_id=users.id\
+                                ORDER BY question.submission_time DESC;"""
 
 insert_new_question = """INSERT INTO question (submission_time, view_number, vote_number, title, message, image, user_id) \
                         VALUES(%s, %s, %s, %s, %s, %s, %s);"""

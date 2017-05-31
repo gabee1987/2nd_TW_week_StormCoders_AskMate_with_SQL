@@ -25,7 +25,7 @@ def index():
                     'Vote number',
                     'Title',
                     'Message',
-                    'Image',
+                    'User',
                     'View',
                     'Delete',
                     'Vote Up',
@@ -82,7 +82,7 @@ def display_question(q_id=None):
                     ]
     data_to_modify = [q_id]
     query = update_question_by_id
-    query_execute(query, data_to_modify, return_data == 'no_data')
+    query_execute(query, data_to_modify, 'no_data')
     query = select_question_by_id
     view_question = query_execute(query, data_to_modify, 'all_data')
     query = select_question_by_questionid
