@@ -20,7 +20,7 @@ CREATE TABLE question (
     title text,
     message text,
     image text,
-    user_id integer
+    askmate_user_id integer
 
 );
 
@@ -33,19 +33,19 @@ CREATE TABLE answer (
     question_id integer,
     message text,
     image text,
-    user_id integer,
+    askmate_user_id integer,
     acceptance boolean
 );
 
-DROP TABLE IF EXISTS public.user;
+DROP TABLE IF EXISTS public.askmate_user;
 DROP SEQUENCE IF EXISTS public.user_id_seq;
-CREATE TABLE user (
-    id serial NOT NULL,
+CREATE TABLE askmate_user (
+    id serial NOT NULL PRIMARY KEY,
     first_name varchar (255),
     last_name varchar (255),
-    username citext (15) UNIQUE NOT NULL,
+    username varchar (15) UNIQUE NOT NULL,
     birth_date date,
-    e_mail citext UNIQUE,
+    e_mail varchar UNIQUE,
     reputation integer
 
 );
@@ -60,20 +60,22 @@ DROP TABLE IF EXISTS public.tag;
 DROP SEQUENCE IF EXISTS public.tag_id_seq;
 
 
-ALTER TABLE ONLY answer
-    ADD CONSTRAINT pk_answer_id PRIMARY KEY (id);
 
-ALTER TABLE ONLY answer
-    ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user(id);
-
-ALTER TABLE ONLY answer
-    ADD CONSTRAINT fk_question_id FOREIGN KEY (question_id) REFERENCES question(id);
-    
 ALTER TABLE ONLY question
     ADD CONSTRAINT pk_question_id PRIMARY KEY (id);
 
 ALTER TABLE ONLY question
-    ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user(id);
+    ADD CONSTRAINT fk_askmate_user_id FOREIGN KEY (askmate_user_id) REFERENCES askmate_user(id);
+    
+ALTER TABLE ONLY answer
+    ADD CONSTRAINT pk_answer_id PRIMARY KEY (id);
+
+ALTER TABLE ONLY answer
+    ADD CONSTRAINT fk_askmate_user_id FOREIGN KEY (askmate_user_id) REFERENCES askmate_user(id);
+
+ALTER TABLE ONLY answer
+    ADD CONSTRAINT fk_question_id FOREIGN KEY (question_id) REFERENCES question(id);
+    
 
 
 

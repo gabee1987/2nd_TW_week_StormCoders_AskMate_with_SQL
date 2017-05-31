@@ -7,10 +7,12 @@ import psycopg2
 from local_config import *
 
 
-def database_manager(query, select_type_query, values=None):
-    """ Set the connection with the database,
-    and execute the orders in it. After the
-    process, it closes the connection. """
+def database_manager(query, return_data='all_data', data_to_modify=None):
+    '''
+        Set the connection with the database,
+        and execute the orders in it. After the
+        process, it closes the connection.
+    '''
 
     connect_str = "dbname={0} user={1} password={2} host={3}".format(DATABASE, USER, PASSWORD, HOST)
     conn = psycopg2.connect(connect_str)
