@@ -198,6 +198,23 @@ def add_registration():
     return redirect("/")
 
 
+@app.route("/user/<user_id>")
+def display_user_page(user_id=None):
+    data_to_modify = [user_id]
+
+    query = select_from_question
+    selected_question_datas = query_execute(query, data_to_modify, 'all_data')
+
+    query = select_from_answer
+    selected_answer_datas = query_execute(query, data_to_modify, 'all_data')
+
+    return render_template(
+                            'user_page.html',
+                            selected_answer_datas=selected_answer_datas,
+                            selected_question_datas=selected_question_datas
+                            )
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return 'Missing', 404
