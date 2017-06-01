@@ -32,7 +32,7 @@ def index():
                     'Vote Down'
                     ]
     query = select_questions_for_display
-    view_questions = query_execute(query, return_data='all_data')
+    view_questions = query_execute(query)
     return render_template('index.html', table_headers=table_headers, view_questions=view_questions)
 
 
@@ -84,9 +84,9 @@ def display_question(q_id=None):
     query = update_question_by_id
     query_execute(query, data_to_modify, 'no_data')
     query = select_question_by_id
-    view_question = query_execute(query, data_to_modify, 'all_data')
+    view_question = query_execute(query)
     query = select_question_by_questionid
-    view_answers = query_execute(query, data_to_modify, 'all_data')
+    view_answers = query_execute(query)
     return render_template(
                         'question.html',
                         q_id=q_id,
@@ -156,7 +156,7 @@ def display_answer(q_id=None):
     '''
     query = display_answer_by_id
     data_to_modify = [q_id]
-    view_questions = query_execute(query, data_to_modify, 'all_data')
+    view_questions = query_execute(query, data_to_modify)
     return render_template('answer_form.html', q_id=q_id, view_questions=view_questions)
 
 
@@ -203,10 +203,10 @@ def display_user_page(user_id=None):
     data_to_modify = [user_id]
 
     query = select_from_question
-    selected_question_datas = query_execute(query, data_to_modify, 'all_data')
+    selected_question_datas = query_execute(query, data_to_modify)
 
     query = select_from_answer
-    selected_answer_datas = query_execute(query, data_to_modify, 'all_data')
+    selected_answer_datas = query_execute(query, data_to_modify)
 
     return render_template(
                             'user_page.html',
