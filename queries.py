@@ -2,7 +2,7 @@
 
 
 select_questions_for_display = """SELECT question.id, question.submission_time, question.view_number, question.vote_number,\
-                                question.title, question.message, users.username\
+                                question.title, question.message, users.username users.id\
                                 FROM question\
                                 LEFT JOIN users\
                                 ON question.user_id=users.id\
