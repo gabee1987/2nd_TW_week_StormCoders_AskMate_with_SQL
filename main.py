@@ -198,6 +198,23 @@ def add_registration():
     return redirect("/")
 
 
+@app.route("/user/<user_id>")
+def display_user_page(user_id=None):
+    data_to_modify = [user_id]
+
+    query = select_from_question
+    selected_question_datas = query_execute(query, data_to_modify, 'all_data')
+
+    query = select_from_answer
+    selected_answer_datas = query_execute(query, data_to_modify, 'all_data')
+
+    return render_template(
+                            'user_page.html',
+                            selected_answer_datas=selected_answer_datas,
+                            selected_question_datas=selected_question_datas
+                            )
+
+
 @app.route('/all-user')
 def all_user():
     '''
@@ -209,12 +226,12 @@ def all_user():
                     'Username',
                     'Birth Date',
                     'Email',
-                    'Reputation'
+                    'Reputation',
+                    'View'
                     ]
     query = select_users
-    view_questions = query_execute(query, return_data='all_data')
-    return render_template('index.html', table_headers=table_headers, view_questions=view_questions)
-
+    list_users = query_execute(query, 'all_data')
+    return render_template('all_user.html', table_headers=table_headers, list_users=list_users)
 
 
 @app.errorhandler(404)
