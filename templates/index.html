@@ -15,6 +15,7 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/question/new">New question</a></li>
+                <li><a href="/all-user">All user</a></li>
                 <li><a href="/registration">New User</a></li>
             </ul>
         </div>
@@ -32,6 +33,7 @@
                     {% for question in row %}
                         {% if question == row[6] %}
                             <td><a href="/user/{{row[7]}}">{{ question }}</a></td>
+                        {% endif %}
                         <td>{{ question }}</td>
                     {% endfor %}
                     <td align="middle">

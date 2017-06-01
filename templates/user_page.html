@@ -23,7 +23,7 @@
                <th>Your questions</th>
            </tr>
            <tr>
-                {% for question_datas in select_from_question %}
+                {% for question_datas in selected_question_datas %}
                     {% for question_id_and_title in question_datas %}
                         <td>
                             <a href="/question/question_id_and_title[1]">question_id_and_title[0]</a>
@@ -35,7 +35,7 @@
                <th>Your answers</th>
            </tr>
            <tr>
-                {% for answer in select_from_answer %}
+                {% for answer in selected_answer_datas %}
                     <td>answer</td>
                 {% endfor %}
            </tr>

@@ -44,3 +44,8 @@ select_from_answer = ("""SELECT answer.message
                                 FROM answer
                                 INNER JOIN users
                                     ON answer.user_id = %s;""")
+
+
+select_users = """SELECT first_name, last_name, username, birth_date, email, reputation\
+                FROM users\
+                ORDER BY id;"""

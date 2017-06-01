@@ -215,6 +215,25 @@ def display_user_page(user_id=None):
                             )
 
 
+@app.route('/all-user')
+def all_user():
+    '''
+        Displays the all-user page.
+    '''
+    table_headers = [
+                    'First name',
+                    'Last name',
+                    'Username',
+                    'Birth Date',
+                    'Email',
+                    'Reputation',
+                    'View'
+                    ]
+    query = select_users
+    list_users = query_execute(query, 'all_data')
+    return render_template('all_user.html', table_headers=table_headers, list_users=list_users)
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return 'Missing', 404
