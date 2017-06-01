@@ -1,35 +1,32 @@
-* {
-  font-family: 'Raleway', sans-serif;
-}
+/* Registration page CSS for AskMate project (part 3) assignment 
+    by StormCoders
+*/
 
-/*#home {
-background-position: auto;
-padding-top: 1rem; 
-background-attachment: fixed;
-background: -webkit-linear-gradient(top, #e5ebeb, #b7cbc9);
-background: linear-gradient(top, #e5ebeb, #b7cbc9);
-}
+
+/* 
+==========================================================================
+Globals
+==========================================================================
 */
 
 html {
     min-height: 100%;
     margin: auto;
 }
-
-
 body {
     margin: 0;
+    margin-bottom: 1em;
     position: center;
     font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
     height: 100%;
-    padding-top: 1rem; 
     background: fixed;
     background: -webkit-radial-gradient(circle, #e8e9eb 10%, #a2a5aa 10%); /* Safari 5.1-6.0 */
     background: -o-radial-gradient(circle, #e8e9eb 10%, #a2a5aa 10%); /* Opera 11.6-12.0 */
     background: -moz-radial-gradient(circle, #e8e9eb 10%, #a2a5aa 10%); /* Firefox 3.6-15 */
     background: radial-gradient(circle, #e8e9eb 30%, #a2a5aa 100%); /* Standard syntax */
 }
+
 
 /* 
 ==========================================================================
@@ -43,20 +40,9 @@ Top menu
     background-color: #61a2c8;
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     box-shadow: 0px 2px 8px #888888;
     margin: 0;
-}
-
-.menu-top ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-top li {
-    float: left;
 }
 
 /* Links inside the navbar */
@@ -65,6 +51,17 @@ Top menu
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+/* Codecool logo on the navbar */
+.menu-top img {
+    float: right;
+    display: block;
+    padding-right: 1em;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+    
 }
 
 
@@ -105,24 +102,23 @@ Top menu
 .menu-top a:hover, .menu-top a:focus, .menu-top a:active {
     color: white;
 }
-.menu-top li a:hover:before, .menu-top a:focus:before, .menu-top a:active:before {
+.menu-top a:hover:before, .menu-top a:focus:before, .menu-top a:active:before {
     -webkit-transform: scaleY(1.09);
     transform: scaleY(1.09);
 }
 
-/* Codecool logo on the navbar */
-.menu-top  img {
-    float: right;
-    display: block;
-    padding-right: 1em;
-    margin: auto;
-    max-width: 100%;
-    height: auto;
-    
-}
-
 
 /* Dropdown menu */
+.menu-top ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-top li {
+    float: left;
+}
+
 .menu-top li a, .dropbtn {
     color: #ffffff;
     text-align: center;
@@ -159,9 +155,34 @@ Top menu
 
 /* 
 ==========================================================================
+Title
+==========================================================================
+*/
+
+h1 {
+    position: relative;
+    text-align: left;
+    margin-top: 0.5em;
+    box-sizing: border-box;
+    color: #d9474a;
+    text-shadow: 0px 1px 1px #888888;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 1em;
+    box-sizing: border-box;
+    color: #d9474a;
+    text-shadow: 0px 1px 1px #888888;
+
+}
+
+/* 
+==========================================================================
 Container
 ==========================================================================
 */
+
 
 .container {
     display: block;
@@ -170,180 +191,129 @@ Container
     position: center;
     box-sizing: border-box;
     padding: 20px;
-    margin: 4em auto;
-    width: 90%;
+    margin: 8em auto;
+    width: 50%;
     box-shadow: 0px 2px 8px #888888;
 }
 
-
-
-
 /* 
 ==========================================================================
-Question table
+Form elements
 ==========================================================================
 */
 
-h3 {
-    color: #d95254;
+.form-group {
+    padding-top: 2rem;
+    position: relative;
+    margin-top: 2.25rem;
+    margin-bottom: 1.25rem;
 }
 
-.q-table {
-  margin: auto;
-  max-width: 100%;
-  min-width: 80%;
-  border-collapse: collapse;
-}
-.q-table tbody tr:hover,
-.q-table tbody tr:focus {
-  background-color: #d7e5ec;
-  color: #000000;
-}
-.q-table tbody tr:nth-child(1):hover,
-.q-table tbody tr:nth-child(1):focus {
-  background-color: #d7e5ec;
-}
-.q-table tbody tr:nth-child(even):hover,
-.q-table tbody tr:nth-child(even):focus {
-  background-color: #d7e5ec;
-}
-.q-table th {
-  background-color: #b9ddee;
-  color: #444444;
-  font-size: 1.5em;
-  padding-left: 15px;
-  border-bottom: solid 1px #DDDDDD
-}
-.q-table tr {
-  font-size: 0.8em;
-  padding: 16px 16px 16px 0;
-  height: 72px;
-  border-bottom: solid 1px #DDDDDD
-}
-.q-table tr td {
-  padding-left: 16px;
-  font-size: 1.5em;
-}
-.q-table tr:nth-child(1) {
-  border-bottom: 1px solid #e6e6e6;
-  color: #828282;
-  text-align: left;
-  font-size: 0.75em;
-  font-weight: 700;
-  padding: 16px 16px 16px 0;
-}
-.q-table tr:nth-child(1) a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 1.5em;
-  font-weight: 300;
-}
-.q-table tr:nth-child(1) a:hover {
-  color: black;
-}
-.q-table .can-be-sorted {
-  opacity: 0.4;
-}
-.q-table .can-be-sorted span {
-  margin-right: -5px;
-}
-.q-table .sortationActive {
-  color: black;
-}
-.q-table .pointer {
-  cursor: pointer;
+.form-group input {
+    height: 0.1em;
 }
 
-.q-table-footer {
-  border-top: 1px solid #e6e6e6;
-  background-color: rgba(63, 81, 181, 0.05);
-  padding-top: 6px;
-  padding-bottom: 6px;
+.form-group .control-label {
+    position: absolute;
+    top: 0.5rem;
+    pointer-events: none;
+    padding-left: 0.125rem;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1.5rem;
+    font-weight: normal;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+}
+.form-group .bar {
+    position: relative;
+    border-bottom: 0.0625rem solid #999;
+    display: block;
+}
+.form-group .bar::before {
+    height: 0.125rem;
+    width: 0;
+    left: 50%;
+    bottom: -0.0625rem;
+    position: absolute;
+    background: #d95254;
+    -webkit-transition: left 0.28s ease, width 0.28s ease;
+    transition: left 0.28s ease, width 0.28s ease;
+    z-index: 2;
+}
+.form-group input {
+    display: block;
+    background: none;
+    padding: 1rem 1rem 1rem 1rem;
+    font-size: 1.5rem;
+    border-width: 0;
+    border-color: transparent;
+    line-height: 1.9;
+    width: 100%;
+    color: transparent;
+    -webkit-transition: all 0.28s ease;
+    transition: all 0.28s ease;
+    box-shadow: none;
 }
 
-
-
-/* 
-==========================================================================
-Answer table
-==========================================================================
-*/
-
-
-.ans-table { 
-  margin: auto;
-  max-width: 80%;
-  min-width: 70%;
-  border-collapse: collapse;
+.form-group input:focus,
+.form-group input:valid,
+.form-group input.form-file,
+.form-group input.has-value {
+    color: #333;
 }
-.ans-table tbody tr:hover,
-.ans-table tbody tr:focus {
-  background-color: #d7e5ec;
-  color: #000000;
+.form-group input:focus ~ .control-label,
+.form-group input.has-value ~ .control-label {
+    font-size: 0.8rem;
+    color: gray;
+    top: -1rem;
+    left: 0;
 }
-.ans-table tbody tr:nth-child(1):hover,
-.ans-table tbody tr:nth-child(1):focus {
-  background-color: #d7e5ec;
+.form-group input:focus {
+    outline: none;
 }
-.ans-table tbody tr:nth-child(even):hover,
-.ans-table tbody tr:nth-child(even):focus {
-  background-color: #d7e5ec;
+.form-group input:focus ~ .control-label {
+    color: #337ab7;
 }
-.ans-table th {
-  background-color: #dc6f71;
-  color: #444444;
-  font-size: 1.5em;
-  padding-left: 15px;
-  border-bottom: solid 1px #DDDDDD
-}
-.ans-table tr {
-  font-size: 0.8em;
-  padding: 16px 16px 16px 0;
-  height: 72px;
-  border-bottom: solid 1px #DDDDDD
-}
-.ans-table tr td {
-  padding-left: 16px;
-  font-size: 1.2em;
-}
-.ans-table tr:nth-child(1) {
-  border-bottom: 1px solid #e6e6e6;
-  color: #828282;
-  text-align: left;
-  font-size: 0.75em;
-  font-weight: 700;
-  padding: 16px 16px 16px 0;
-}
-.ans-table tr:nth-child(1) a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 1.5em;
-  font-weight: 300;
-}
-.ans-table tr:nth-child(1) a:hover {
-  color: black;
-}
-.ans-table .can-be-sorted {
-  opacity: 0.4;
-}
-.ans-table .can-be-sorted span {
-  margin-right: -5px;
-}
-.ans-table .sortationActive {
-  color: black;
-}
-.ans-table .pointer {
-  cursor: pointer;
-}
-
-.ans-table-footer {
-  border-top: 1px solid #e6e6e6;
-  background-color: rgba(63, 81, 181, 0.05);
-  padding-top: 6px;
-  padding-bottom: 6px;
+.form-group input:focus ~ .bar::before {
+    width: 100%;
+    left: 0;
 }
 
 
+
+@media only screen and (max-width:768px) {
+    
+    .container {
+        background-color: #fdfdfd;
+        position: fixed;
+        padding:0;
+        margin:0;
+
+        top:0;
+        left:0;
+
+        width: 100%;
+        height: 100%;
+}
+    .form-group {
+        width:100%;
+        margin:0 auto;
+    }
+    .form-group label {
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
+        font-weight:normal;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+    }
+    .form-group input[type=submit], .form-group input[type=reset] {
+        margin-right: 10px;
+        padding: 5px;
+    }
+}
 
 /* 
 ==========================================================================
@@ -352,7 +322,7 @@ Buttons
 */
 
 
-.button {
+.button-container {
     text-align: center;
 }
 
@@ -361,8 +331,8 @@ Buttons
     background: currentColor;
     border: 1px solid currentColor;
     font-size: 1.1rem;
-    color: #4f93ce;
-    margin: 3rem 1rem;
+    color: #5ba3ca;
+    margin: 3rem 0;
     padding: 0.75rem 3rem;
     cursor: pointer;
     -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
@@ -406,17 +376,4 @@ Buttons
 }
 .button:focus {
     outline: none;
-}
-
-.home-button {
-    position: absolute;
-    top: -40px;
-    left: 10px; 
-}
-
-
-.new_ans-button {
-    position: relative;
-    bottom: -40px;
-    right: -90em; 
 }

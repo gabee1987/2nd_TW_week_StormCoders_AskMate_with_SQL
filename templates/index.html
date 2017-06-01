@@ -15,14 +15,12 @@
             <ul>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/question/new">New question</a></li>
-                <li><a href="/new-user">New User</a></li>
+                <li><a href="/registration">New User</a></li>
             </ul>
         </div>
-    <div class="container">
-        <div class="table-title">
             <h1>AskMate</h1>
             <h2>Question list</h2>
-        </div>
+    <div class="container">
         <table id="table" class="table">
             <tr>
                 {% for item in table_headers %}
@@ -32,6 +30,8 @@
             {% for row in view_questions %}
                 <tr>
                     {% for question in row %}
+                        {% if question == row[6] %}
+                            <td><a href="/user/{{row[7]}}">{{ question }}</a></td>
                         <td>{{ question }}</td>
                     {% endfor %}
                     <td align="middle">
